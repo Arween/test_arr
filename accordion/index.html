@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>accordion</title>
+</head>
+
+
+<style type="text/css">
+    .bt_accordion {
+        background-color: #4286f4;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 20px;
+        width: 80%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        display: block;
+}
+.bt_accordion.active, .bt_accordion:hover {
+    background-color: #424bf4;
+}
+
+div.accordion_wp {
+    padding: 0 16px;
+    background-color: white;
+    display: none;
+    color: #000000;
+    width: 70%;
+
+/* немного другой вариант + стили*/
+
+/*    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;*/
+}
+</style>
+<body>
+
+    <button class="bt_accordion">Text 1</button>
+        <div class="accordion_wp">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>   
+    <button class="bt_accordion">Text 2</button>
+        <div class="accordion_wp">
+            <p>Lorem Ipsum ...</p>
+        </div>
+    <button class="bt_accordion">Text 3</button>
+        <div class="accordion_wp">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+        </div>
+    <button class="bt_accordion">Text 4</button>
+        <div class="accordion_wp">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+        </div>
+    <button class="bt_accordion">Text 5</button>
+        <div class="accordion_wp">
+            <p>Lorem Ipsum ...</p>
+        </div>
+
+
+</body>
+
+
+<script type="text/javascript">
+    
+    var massAccardion = document.getElementsByClassName("bt_accordion");
+
+
+//первый вариант
+
+    for ( var i = 0; i < massAccardion.length; i++) {
+    massAccardion[i].onclick = function(){
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }
+
+// второй вариант. не работкает
+
+    // for (i = 0; i < massAccardion.length; i++) {
+    //     massAccardion[i].onclick = function() {
+    //         this.classList.toggle("active");
+    //         var panel = this.nextElementSibling;
+    //         if (panel.style.maxHeight){
+    //             panel.style.maxHeight = null;
+    //         } else {
+    //             panel.style.maxHeight = panel.scrollHeight + "px";
+    //         } 
+    //     }
+    // }
+}
+</script>
+
+</html>
