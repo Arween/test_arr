@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>accordion</title>
+</head>
+
+
+<style type="text/css">
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #1f7bad;
+    width: 50%;
+}
+
+ul.tab li {
+    float: left;
+}
+
+ul.tab li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+ul.tab li a:hover {
+    background-color: #37a8e5;
+}
+
+ul.tab li a:focus, .active {
+    background-color: #37a8e5;
+}
+
+.tab_content {
+    display: none;
+    padding: 6px 12px;
+    border: none;
+    width: 48.25%;
+    background-color: #eff9ff;
+}
+
+</style>
+<body>
+
+    <ul class="tab">
+        <li>
+            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Sherlock')">Sherlock</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Mycroft')">Mycroft</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Eurus')">Eurus</a>
+        </li>
+    </ul>
+
+    <div id="Sherlock" class="tab_content">
+        <h3>Sherlock</h3>
+        <p>"I'm a consulting detective. The only one in the world. I invented the job."</p>
+    </div>
+
+    <div id="Mycroft" class="tab_content">
+        <h3>Mycroft</h3>
+        <p>"For goodness' sake! I occupy a minor position in the British Government."</p> 
+    </div>
+
+    <div id="Eurus" class="tab_content">
+        <h3>Eurus</h3>
+        <p>"I that am lost,oh who will find me?</br>
+        Deep down below the old beech tree</br>
+        Help succour me now the east winds blow</br>
+        Sixteen by six ,brother,and under we go !"</p>
+    </div>
+
+
+</body>
+
+
+<script type="text/javascript">
+    
+    function openCity(evt, personName) {
+
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab_content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(personName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</html>
