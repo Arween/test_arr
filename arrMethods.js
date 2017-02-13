@@ -60,8 +60,8 @@ function methodSplice2(arr, n, m, element){ // мой вариант
 methodSplice2(['Маша', 'Петя', 'Марина', 'Василий'], 2, 1 , ['element', 'dfdsf']);
 
 function myPush(arr, newElem){
-    arr.length++;
-    arr[arr.length-1] = newElem;
+//    arr.length++;
+    arr[arr.length] = newElem;
     return arr;
 }
 
