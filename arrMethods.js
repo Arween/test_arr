@@ -159,7 +159,37 @@ function methodSlice(arr, n, m){
 
 methodSlice(["Почему", "надо", "учить", "JavaScript"], 1, 3)
 
+function methodSome(arr, callback, thisArg) {
+    for (var i = 0; i < arr.length; i++) {
+        if (callback.call(thisArg, arr[i], i, arr)) {
+            return true;
+        }
+    }
+    return false;
+};
 
+var greaterNumber = methodSome([14, 5, 86, 13, 72, 90], function(elem) {
+    return (elem >= 100);
+});
+
+console.log('Method some: ' + greaterNumber);
+
+
+
+function methodEvery(arr, callback, thisArg) {
+    for (var i = 0; i < arr.length; i++) {
+        if (!callback.call(thisArg, arr[i], i, arr)) {
+            return false;
+        }
+    }
+    return true;
+};
+
+var everyNumber = methodEvery([14, 15, 8, 9, 17, 60], function(elem) {
+    return (elem >= 14);
+});
+
+console.log('Method every: ' + everyNumber);
 
 
 
