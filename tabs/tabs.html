@@ -32,6 +32,7 @@ ul.tab li a {
     text-decoration: none;
     transition: 0.3s;
     font-size: 17px;
+    cursor: pointer;
 }
 
 ul.tab li a:hover {
@@ -55,13 +56,13 @@ ul.tab li a:focus, .active {
 
     <ul class="tab">
         <li>
-            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Sherlock')">Sherlock</a>
+            <a class="tablinks active">Sherlock</a>
         </li>
         <li>
-            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Mycroft')">Mycroft</a>
+            <a class="tablinks">Mycroft</a>
         </li>
         <li>
-            <a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Eurus')">Eurus</a>
+            <a class="tablinks">Eurus</a>
         </li>
     </ul>
 
@@ -89,8 +90,22 @@ ul.tab li a:focus, .active {
 
 <script type="text/javascript">
     
-    function openCity(evt, personName) {
+    var tab = document.getElementById('tab');
 
+    tab.addEventListener('click', function(event){
+        var target = event.target;
+
+        while (target != tab) {
+            if ( target.tagName == 'A' ){
+                var personName = target.textContent;
+                console.log(personName);
+                openName(target, personName);
+            }
+            target = target.parentNode;
+        }
+    })
+
+    function openName(elem, personName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab_content");
             for (i = 0; i < tabcontent.length; i++) {
@@ -98,10 +113,10 @@ ul.tab li a:focus, .active {
         }
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+             tablinks[i].classList.remove('active');
         }
         document.getElementById(personName).style.display = "block";
-        evt.currentTarget.className += " active";
+        elem.className += " active";
     }
 </script>
 
